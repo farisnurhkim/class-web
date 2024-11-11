@@ -1,8 +1,11 @@
 # [Class Web](https://tb-xiirpl1-24.vercel.app/)
+
 The 12th grade RPL 1 class 2024 commemorative website for SMK Taruna Bangsa, Bekasi City, displays students, homeroom teachers, class structure, gallery and real-time chat. Created with Next.js, Typescript, Tailwind, Firebase, Framer motion, shadcn ui + magic ui
 
 ## Prerequisites
+
 Before you begin, ensure you have the following installed on your machine:
+
 - Node.js: Download and [install Node.js](https://nodejs.org)
 - npm: Node.js package manager (comes with Node.js installation)
 
@@ -10,21 +13,25 @@ Before you begin, ensure you have the following installed on your machine:
 
 - Gallery images/videos
 - Authentication
-- Serach students 
+- Serach students
 - Real-time chat. Reply, delete
-
 
 ## Getting started
 
 Clone the repository.
+
 ```sh
 git clone https://github.com/farisnurhkim/Class-Web.git
 ```
+
 Navigate to the project directory:
+
 ```sh
-cd Class-Web
+cd class-web
 ```
+
 Install dependencies
+
 ```sh
 npm install
 ```
@@ -32,13 +39,16 @@ npm install
 ## Setup Environment
 
 Create a .env.local file in the root of your project.
-create 
+create
+
 ```sh
 AUTH_SECRET=	# Added by `npx auth`. Read more: https://cli.authjs.dev
 AUTH_GOOGLE_ID="Your auth google id"
 AUTH_GOOGLE_SECRET="Your auth secret id"
 ```
+
 Create a .env file in the root of your project.
+
 ```sh
 #firebase setup
 NEXT_PUBLIC_API_KEY=your_api_key
@@ -54,13 +64,14 @@ NEXT_PUBLIC_GTM_ID=your_gtm_id
 
 AUTH_TRUST_HOST=http://localhost:3000  #add this if production mode (change it to your domain)
 ```
+
 ## Development
 
 To start the development server, run:
+
 ```sh
 npm run dev
 ```
-
 
 ## Learn More
 
