@@ -21,7 +21,7 @@ Before you begin, ensure you have the following installed on your machine:
 Clone the repository.
 
 ```sh
-git clone https://github.com/farisnurhkim/Class-Web.git
+git clone https://github.com/farisnurhkim/class-web.git
 ```
 
 Navigate to the project directory:
