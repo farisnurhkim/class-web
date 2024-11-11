@@ -1,24 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# [Class Web](https://tb-xiirpl1-24.vercel.app/)
+The 12th grade RPL 1 class 2024 commemorative website for SMK Taruna Bangsa, Bekasi City, displays students, homeroom teachers, class structure, gallery and real-time chat. Created with Next.js, Typescript, Tailwind, Firebase, Framer motion, shadcn ui + magic ui
 
-## Getting Started
+## Prerequisites
+Before you begin, ensure you have the following installed on your machine:
+- Node.js: Download and [install Node.js](https://nodejs.org)
+- npm: Node.js package manager (comes with Node.js installation)
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Gallery images/videos
+- Authentication
+- Serach students 
+- Real-time chat. Reply, delete
+
+
+## Getting started
+
+Clone the repository.
+```sh
+git clone https://github.com/farisnurhkim/Class-Web.git
+```
+Navigate to the project directory:
+```sh
+cd Class-Web
+```
+Install dependencies
+```sh
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Setup Environment
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Create a .env.local file in the root of your project.
+create 
+```sh
+AUTH_SECRET=	# Added by `npx auth`. Read more: https://cli.authjs.dev
+AUTH_GOOGLE_ID="Your auth google id"
+AUTH_GOOGLE_SECRET="Your auth secret id"
+```
+Create a .env file in the root of your project.
+```sh
+#firebase setup
+NEXT_PUBLIC_API_KEY=your_api_key
+NEXT_PUBLIC_AUTH_DOMAIN=your_auth_domain
+NEXT_PUBLIC_PROJECT_ID=your_project_id
+NEXT_PUBLIC_STORAGE_BUCKET=your_storage_bucket
+NEXT_PUBLIC_MESSAGING_SENDER_ID=your_messaging_sender_id
+NEXT_PUBLIC_APP_ID=your_app_id
+NEXT_PUBLIC_MEASUREMENT_ID=your_measurement_id
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+#Opsional for google analytics
+NEXT_PUBLIC_GTM_ID=your_gtm_id
+
+AUTH_TRUST_HOST=http://localhost:3000  #add this if production mode (change it to your domain)
+```
+## Development
+
+To start the development server, run:
+```sh
+npm run dev
+```
+
 
 ## Learn More
 
