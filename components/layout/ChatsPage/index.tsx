@@ -255,7 +255,7 @@ const ChatsPage = ({ user }: { user: User | null | undefined }) => {
                         <span className="block w-5 h-5 bg-green-400 rounded-full animate-pulse" />
                     </div>
                 </div>
-                <div ref={containerRef} onScroll={handleScroll} className="w-full mx-auto px-4 py-6 text-white font-sans h-[470px] md:h-[420px] overflow-y-auto pb-16">
+                <div ref={containerRef} onScroll={handleScroll} className="w-full mx-auto px-4 py-6 text-white font-sans h-[580px] md:h-[620px] overflow-y-auto pb-16">
 
                     {debouncedMessages.map((message, index) => {
                         const dataReply = debouncedMessages.find((msg) => msg.id === message.reply);
