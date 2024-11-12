@@ -63,7 +63,7 @@ export default function RootLayout({
         <ThemeProvider
           attribute="class"
           enableSystem={false}
-
+          defaultTheme="dark"
         >
           <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GTM_ID || ""} />
           <Navbar />

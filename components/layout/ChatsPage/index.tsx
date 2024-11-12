@@ -327,7 +327,7 @@ const ChatsPage = ({ user }: { user: User | null | undefined }) => {
                                                 </DropdownMenuItem>
                                             )}
 
-                                            {user && message.reply && (
+                                            {message.reply && (
                                                 <DropdownMenuItem onClick={() => scrollToMessage(message?.reply || "")}>
                                                     <div className='flex items-center gap-2'>
                                                         <Eye className="w-4 h-4" />
