@@ -221,7 +221,7 @@ const ChatsPage = ({ user }: { user: User | null | undefined }) => {
             setTimeout(() => {
                 element.classList.remove('bg-blue-200');
                 element.classList.remove('dark:bg-slate-800');
-            }, 1500);
+            }, 2100);
         }
     };
     
