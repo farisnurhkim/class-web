@@ -214,7 +214,7 @@ const ChatsPage = ({ user }: { user: User | null | undefined }) => {
                     behavior: 'smooth',
                     block: 'center'
                 });
-            }, 10)
+            }, 600)
 
             element.classList.add('bg-blue-200');
             element.classList.add('dark:bg-slate-800');
