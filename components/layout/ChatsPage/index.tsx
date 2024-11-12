@@ -202,23 +202,19 @@ const ChatsPage = ({ user }: { user: User | null | undefined }) => {
         }
     };
 
-    const triggerScrollEvent = () => {
-        if (containerRef.current) {
-            containerRef.current.scrollTop += 1;
-            containerRef.current.scrollTop -= 1;
-        }
-    };
 
     // scroll lihat pesan reply
     const messageRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
     const scrollToMessage = (id: string) => {
         const element = messageRefs.current[id];
         if (element) {
-            triggerScrollEvent();
-            element.scrollIntoView({
-                behavior: 'smooth',
-                block: 'center'
-            });
+            window.scrollTo({ top: window.scrollY + 1, behavior: 'smooth' });
+            setTimeout(() => {
+                element.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+            }, 100)
 
             element.classList.add('bg-blue-200');
             element.classList.add('dark:bg-slate-800');
@@ -226,10 +222,9 @@ const ChatsPage = ({ user }: { user: User | null | undefined }) => {
                 element.classList.remove('bg-blue-200');
                 element.classList.remove('dark:bg-slate-800');
             }, 1500);
-
-            
         }
     };
+    
 
     return (
         <>
