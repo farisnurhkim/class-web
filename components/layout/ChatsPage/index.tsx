@@ -202,26 +202,32 @@ const ChatsPage = ({ user }: { user: User | null | undefined }) => {
         }
     };
 
+    const triggerScrollEvent = () => {
+        if (containerRef.current) {
+            containerRef.current.scrollTop += 1;
+            containerRef.current.scrollTop -= 1;
+        }
+    };
 
     // scroll lihat pesan reply
     const messageRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
     const scrollToMessage = (id: string) => {
         const element = messageRefs.current[id];
         if (element) {
-            setTimeout(() => {     
-                element.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'center'
-                });
-    
-                element.classList.add('bg-blue-200');
-                element.classList.add('dark:bg-slate-800');
-                setTimeout(() => {
-                    element.classList.remove('bg-blue-200');
-                    element.classList.remove('dark:bg-slate-800');
-                }, 1500);
-                
-            }, 100)
+            triggerScrollEvent();
+            element.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
+            });
+
+            element.classList.add('bg-blue-200');
+            element.classList.add('dark:bg-slate-800');
+            setTimeout(() => {
+                element.classList.remove('bg-blue-200');
+                element.classList.remove('dark:bg-slate-800');
+            }, 1500);
+
+            
         }
     };
 
