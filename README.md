@@ -42,15 +42,7 @@ Create a .env.local file in the root of your project.
 create
 
 ```sh
-AUTH_SECRET=	# Added by `npx auth`. Read more: https://cli.authjs.dev
-AUTH_GOOGLE_ID="Your auth google id"
-AUTH_GOOGLE_SECRET="Your auth secret id"
-```
-
-Create a .env file in the root of your project.
-
-```sh
-#firebase setup
+# firebase setup
 NEXT_PUBLIC_API_KEY=your_api_key
 NEXT_PUBLIC_AUTH_DOMAIN=your_auth_domain
 NEXT_PUBLIC_PROJECT_ID=your_project_id
@@ -59,10 +51,21 @@ NEXT_PUBLIC_MESSAGING_SENDER_ID=your_messaging_sender_id
 NEXT_PUBLIC_APP_ID=your_app_id
 NEXT_PUBLIC_MEASUREMENT_ID=your_measurement_id
 
-#Opsional for google analytics
+# Opsional for google analytics
 NEXT_PUBLIC_GTM_ID=your_gtm_id
 
-AUTH_TRUST_HOST=http://localhost:3000  #add this if production mode (change it to your domain)
+#  OAuth configuration
+AUTH_SECRET=	# Added by `npx auth`. Read more: https://cli.authjs.dev
+AUTH_GOOGLE_ID="Your auth google id"
+AUTH_GOOGLE_SECRET="Your auth secret id"
+
+```
+
+Create a .env file in the root of your project.
+
+```sh
+# add this if production mode (change it to your domain)
+AUTH_TRUST_HOST=http://localhost:3000 
 ```
 
 ## Development
