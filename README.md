@@ -65,7 +65,7 @@ Create a .env file in the root of your project.
 
 ```sh
 # add this if production mode (change it to your domain)
-AUTH_TRUST_HOST=http://localhost:3000 
+AUTH_TRUST_HOST=http://localhost:3000
 ```
 
 ## Development

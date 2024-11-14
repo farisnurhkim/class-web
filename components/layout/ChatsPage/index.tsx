@@ -79,21 +79,24 @@ const ChatsPage = ({ user }: { user: User | null | undefined }) => {
             isSending: true,
             createdAt: date,
         }
+
+        if (!user) {
+            console.error('User is not authenticated');
+            return;
+        }
+    
+        if (!value) {
+            console.error("Please enter a message");
+            return;
+        }
+
+        setValue("");
+        handleCloseReply();
+        scrollToBottom();
+
         try {
-            if (!user) {
-                throw new Error('User is not authenticated');
-            }
-
-            if (!value) {
-                throw new Error("Please enter a message");
-            }
-
-
             OaddMessages(message)
-            setValue("");
-            handleCloseReply();
-            scrollToBottom();
-
+           
             if (!isOnline) {
                 throw new Error('You are offline');
             }
