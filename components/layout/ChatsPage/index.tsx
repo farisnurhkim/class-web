@@ -8,12 +8,13 @@ import H2 from '@/components/ui/H2'
 import { useConnectionStatus } from '@/hooks/useConnectionStatus';
 import { Chat, useGetDataMessages } from '@/hooks/useGetDataMessages';
 import { cn } from '@/lib/utils';
-import { Check, CheckCheck, CircleAlert, Eye, MessageCircleOff, Send, X } from 'lucide-react'
+import { Check, CheckCheck, CircleAlert, MessageCircleOff, Send, X } from 'lucide-react'
 import { User } from 'next-auth';
 import { useCallback, useEffect, useOptimistic, useRef, useState } from 'react';
 import { format } from "date-fns";
 import { Copy, Loader, Reply, Trash2 } from 'lucide-react'
 import { v4 as uuidv4 } from 'uuid';
+import { motion, AnimatePresence } from 'framer-motion';
 
 
 const ChatsPage = ({ user }: { user: User | null | undefined }) => {
@@ -38,7 +39,7 @@ const ChatsPage = ({ user }: { user: User | null | undefined }) => {
             if (isDifferent) {
                 setDebouncedMessages(combinedMessages);
             }
-        }, 100); 
+        }, 100);
 
         return () => clearTimeout(handler);
 
@@ -55,6 +56,8 @@ const ChatsPage = ({ user }: { user: User | null | undefined }) => {
 
     const handleCopy = (content: string) => {
         setCopied(true);
+        handleMenuClose();
+
         navigator.clipboard.writeText(content);
 
         setTimeout(() => {
@@ -84,7 +87,7 @@ const ChatsPage = ({ user }: { user: User | null | undefined }) => {
             console.error('User is not authenticated');
             return;
         }
-    
+
         if (!value) {
             console.error("Please enter a message");
             return;
@@ -96,7 +99,7 @@ const ChatsPage = ({ user }: { user: User | null | undefined }) => {
 
         try {
             OaddMessages(message)
-           
+
             if (!isOnline) {
                 throw new Error('You are offline');
             }
@@ -125,6 +128,7 @@ const ChatsPage = ({ user }: { user: User | null | undefined }) => {
     }
 
     const handleDelete = async (id: string) => {
+        handleMenuClose();
         try {
             if (!user) {
                 throw new Error('User is not authenticated');
@@ -171,6 +175,7 @@ const ChatsPage = ({ user }: { user: User | null | undefined }) => {
     const handleReply = useCallback(async (id: string, username: string) => {
         setReply({ isReply: true, username });
         setKeyReply(id);
+        handleMenuClose();
 
         setTimeout(() => {
             inputRef.current?.focus();
@@ -210,6 +215,7 @@ const ChatsPage = ({ user }: { user: User | null | undefined }) => {
     const messageRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
     const scrollToMessage = (id: string) => {
         const element = messageRefs.current[id];
+        handleMenuClose();
         if (element) {
             window.scrollTo({ top: window.scrollY + 1, behavior: 'smooth' });
             setTimeout(() => {
@@ -227,7 +233,130 @@ const ChatsPage = ({ user }: { user: User | null | undefined }) => {
             }, 2100);
         }
     };
-    
+
+
+
+    const [showMenu, setShowMenu] = useState(false);
+    const [menuPosition, setMenuPosition] = useState({ x: 0, y: 0 });
+    const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+    const menuRef = useRef<HTMLDivElement | null>(null);
+    const [selectedMessage, setSelectedMessage] = useState("");
+
+    const calculateMenuPosition = (clickX: number, clickY: number) => {
+        const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
+        const menuWidth = menuRef.current?.offsetWidth || 200;
+        const menuHeight = menuRef.current?.offsetHeight || 300;
+
+        let x = clickX;
+        let y = clickY;
+
+        if (x + menuWidth > viewportWidth) {
+            x = viewportWidth - menuWidth - 10;
+        }
+
+        if (y + menuHeight > viewportHeight) {
+            y = viewportHeight - menuHeight - 10;
+        }
+
+        x = Math.max(10, x);
+        y = Math.max(10, y);
+
+        return { x, y };
+    };
+
+    const handleLongPressStart = useCallback((e: React.TouchEvent<HTMLDivElement> | React.MouseEvent<HTMLDivElement>, messageId: string) => {
+        const pressX = 'touches' in e ? e.touches[0].clientX : e.clientX;
+        const pressY = 'touches' in e ? e.touches[0].clientY : e.clientY;
+
+        timeoutRef.current = setTimeout(() => {
+            const position = calculateMenuPosition(pressX, pressY);
+            setSelectedMessage(messageId)
+            setMenuPosition(position);
+            setShowMenu(true);
+        }, 500);
+    }, []);
+
+    const handleLongPressEnd = useCallback(() => {
+        if (timeoutRef.current) {
+            clearTimeout(timeoutRef.current);
+        }
+    }, []);
+
+
+    const handleMenuClose = () => {
+        setShowMenu(false);
+    };
+
+    useEffect(() => {
+        if (!showMenu) {
+            setSelectedMessage("");
+        }
+    }, [showMenu])
+
+    useEffect(() => {
+        if (showMenu) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+        return () => {
+            document.body.style.overflow = '';
+        };
+    }, [showMenu]);
+
+    const menuVariants = {
+        initial: {
+            opacity: 0,
+            scale: 0.95,
+        },
+        animate: {
+            opacity: 1,
+            scale: 1,
+            transition: {
+                duration: 0.15,
+                ease: "easeOut"
+            }
+        },
+        exit: {
+            opacity: 0,
+            scale: 0.95,
+            transition: {
+                duration: 0.1,
+                ease: "easeIn"
+            }
+        }
+    };
+
+    const backdropVariants = {
+        initial: { opacity: 0 },
+        animate: {
+            opacity: 1,
+            transition: {
+                duration: 0.2
+            }
+        },
+        exit: {
+            opacity: 0,
+            transition: {
+                duration: 0.15,
+                delay: 0.1
+            }
+        }
+    };
+
+    const buttonVariants = {
+        hover: {
+            backgroundColor: "rgb(243, 244, 246)",
+            transition: { duration: 0.2 }
+        },
+        tap: {
+            backgroundColor: "rgb(229, 231, 235)",
+            scale: 0.98
+        }
+    };
+
+
 
     return (
         <>
@@ -266,6 +395,7 @@ const ChatsPage = ({ user }: { user: User | null | undefined }) => {
 
                     {debouncedMessages.map((message, index) => {
                         const dataReply = debouncedMessages.find((msg) => msg.id === message.reply);
+                        const selectedMessageId = debouncedMessages.find((msg) => msg.id === selectedMessage);
                         return (
                             <div ref={(el: HTMLDivElement | null) => {
                                 if (el) {
@@ -278,88 +408,142 @@ const ChatsPage = ({ user }: { user: User | null | undefined }) => {
                                         <Avatar avatarUrl={message.image} className='mr-2' />
                                     )}
 
-                                    <DropdownMenu>
-                                        <DropdownMenuTrigger asChild>
-                                            <div className={cn("px-3 py-2 rounded-lg max-w-[80%]", user?.email === message.email ? "bg-blue-600" : "bg-gray-200 dark:bg-slate-800")}>
-                                                {message.email !== user?.email && (
-                                                    <div className="text-orange-400 font-bold select-none">{message.username}</div>
-                                                )}
-
-                                                {dataReply && (
-                                                    <div className={cn("px-2 py-1 rounded-md border-l-4 border-l-green-600 mt-2", user && user?.email === message?.email ? "bg-blue-700" : "bg-gray-300 dark:bg-slate-900")}>
-                                                        <div className={cn("font-semibold select-none", dataReply?.email === user?.email ? "text-green-500" : " text-orange-400")}>{dataReply?.email === user?.email ? "You" : dataReply?.username}</div>
-                                                        <div className={cn("text-sm select-none line-clamp-3", dataReply?.isDeleted ? "text-gray-400 dark:text-gray-400 italic flex items-center gap-1" : "dark:text-white")}>
-                                                            {dataReply?.isDeleted && (
-                                                                <MessageCircleOff className='text-gray-400 w-4 h-4' />
-                                                            )}
-                                                            <span className={cn("text-sm mt-1 select-none", dataReply?.isDeleted ? "text-gray-400 dark:text-gray-400 italic" : "dark:text-white",
-                                                                user && user?.email !== message?.email ? "text-black" : "text-white"
-                                                            )}
-                                                            >
-
-                                                                {dataReply?.content}
-
-                                                            </span>
-                                                        </div>
-                                                        <div className="text-gray-100 dark:text-gray-400 text-xs text-right">{dataReply?.createdAt && format(new Date(dataReply?.createdAt), "HH:mm")}</div>
-                                                    </div>
-                                                )}
 
 
-                                                <div className={cn("text-sm mt-1 select-none", user?.email === message.email ? "text-white" : "text-black",
-                                                    message.isDeleted && "flex gap-1 text-gray-400 items-center "
-                                                )}>
-                                                    {message.isDeleted && (
-                                                        <MessageCircleOff className="text-gray-400 dark:text-gray-400 italic h-4 w-4" />
+                                    <motion.div
+                                        whileHover={{ scale: 1.005 }}
+                                        whileTap={{ scale: 0.995 }}
+                                        onTouchStart={(e) => handleLongPressStart(e, message.id)}
+                                        onTouchEnd={handleLongPressEnd}
+                                        onMouseDown={(e) => handleLongPressStart(e, message.id)}
+                                        onMouseUp={handleLongPressEnd}
+                                        onMouseLeave={handleLongPressEnd}
+                                        className={cn("px-3 py-2 rounded-lg max-w-[80%]", user?.email === message.email ? "bg-blue-600" : "bg-gray-200 dark:bg-slate-800")}>
+                                        {message.email !== user?.email && (
+                                            <div className="text-orange-400 font-bold select-none">{message.username}</div>
+                                        )}
+
+                                        {dataReply && (
+                                            <div onClick={() => scrollToMessage(message?.reply || "")}
+                                             className={cn("px-2 z-[150] py-1 rounded-md border-l-4 border-l-green-600 mt-2", user && user?.email === message?.email ? "bg-blue-700" : "bg-gray-300 dark:bg-slate-900")}>
+                                                <div className={cn("font-semibold select-none", dataReply?.email === user?.email ? "text-green-500" : " text-orange-400")}>{dataReply?.email === user?.email ? "You" : dataReply?.username}</div>
+                                                <div className={cn("text-sm select-none line-clamp-3", dataReply?.isDeleted ? "text-gray-400 dark:text-gray-400 italic flex items-center gap-1" : "dark:text-white")}>
+                                                    {dataReply?.isDeleted && (
+                                                        <MessageCircleOff className='text-gray-400 w-4 h-4' />
                                                     )}
-                                                    <span className={cn("text-sm mt-1 select-none", message.isDeleted ? "text-gray-400 dark:text-gray-400 italic" : "dark:text-white")}>
-                                                        {message.content}
+                                                    <span className={cn("text-sm mt-1 select-none", dataReply?.isDeleted ? "text-gray-400 dark:text-gray-400 italic" : "dark:text-white",
+                                                        user && user?.email !== message?.email ? "text-black" : "text-white"
+                                                    )}
+                                                    >
+
+                                                        {dataReply?.content}
+
                                                     </span>
-
                                                 </div>
-
+                                                <div className="text-gray-100 dark:text-gray-400 text-xs text-right">{dataReply?.createdAt && format(new Date(dataReply?.createdAt), "HH:mm")}</div>
                                             </div>
-                                        </DropdownMenuTrigger>
-                                        <DropdownMenuContent side={"bottom"}>
-                                            {!message.isDeleted && (!message.isError || message.isSending) && user && (
-                                                <DropdownMenuItem onClick={() => handleReply(message.id, message.username)}>
-                                                    <div className='flex items-center gap-2'>
-                                                        <Reply className="w-4 h-4" />
-                                                        <span>Reply</span>
-                                                    </div>
-                                                </DropdownMenuItem>
-                                            )}
+                                        )}
 
-                                            {message.reply && (
-                                                <DropdownMenuItem onClick={() => scrollToMessage(message?.reply || "")}>
-                                                    <div className='flex items-center gap-2'>
-                                                        <Eye className="w-4 h-4" />
-                                                        <span>See message</span>
-                                                    </div>
-                                                </DropdownMenuItem>
-                                            )}
 
-                                            {user && user?.email === message.email && !message.isDeleted && (
-                                                <DropdownMenuItem onClick={() => handleDelete(message.id)}>
-                                                    <div className='flex items-center gap-2'>
-                                                        <Trash2 className="w-4 h-4" />
-                                                        <span>Delete</span>
-                                                    </div>
-                                                </DropdownMenuItem>
+                                        <div className={cn("text-sm mt-1 select-none", user?.email === message.email ? "text-white" : "text-black",
+                                            message.isDeleted && "flex gap-1 text-gray-400 items-center "
+                                        )}>
+                                            {message.isDeleted && (
+                                                <MessageCircleOff className="text-gray-400 dark:text-gray-400 italic h-4 w-4" />
                                             )}
-                                            
-                                            <DropdownMenuItem onClick={() => handleCopy(message.content)}>
-                                                <div className='flex items-center gap-2'>
-                                                    {copied ? (
-                                                        <Loader className='w-4 h-4 animate-spin' />
-                                                    ) : (
-                                                        <Copy className="w-4 h-4" />
-                                                    )}
-                                                    <span>Copy</span>
-                                                </div>
-                                            </DropdownMenuItem>
-                                        </DropdownMenuContent>
-                                    </DropdownMenu>
+                                            <span className={cn("text-sm mt-1 select-none", message.isDeleted ? "text-gray-400 dark:text-gray-400 italic" : "dark:text-white")}>
+                                                {message.content}
+                                            </span>
+
+                                        </div>
+
+                                    </motion.div>
+
+                                    {/* menu */}
+                                    <AnimatePresence>
+                                        {showMenu && (!selectedMessageId?.isDeleted) && (
+                                            <>
+                                                <motion.div
+                                                    className="fixed inset-0 z-[999] bg-black bg-opacity-10"
+                                                    onClick={handleMenuClose}
+                                                    variants={backdropVariants}
+                                                    initial="initial"
+                                                    animate="animate"
+                                                    exit="exit"
+                                                />
+                                                <motion.div
+                                                    ref={menuRef}
+                                                    className="fixed z-[99999] bg-background rounded-lg shadow-md"
+                                                    style={{
+                                                        left: `${menuPosition.x}px`,
+                                                        top: `${menuPosition.y}px`,
+                                                        zIndex: 1000,
+                                                        originX: 0,
+                                                        originY: 0
+                                                    }}
+                                                    variants={menuVariants}
+                                                    initial="initial"
+                                                    animate="animate"
+                                                    exit="exit"
+                                                >
+                                                    <div className="py-1">
+                                                        {selectedMessageId && (
+
+                                                            <>
+                                                                {!selectedMessageId.isDeleted && (!selectedMessageId.isError || selectedMessageId.isSending) && user && (
+                                                                    <motion.button
+                                                                        onClick={() => handleReply(selectedMessageId.id, selectedMessageId.username)}
+                                                                        className="flex group items-center space-x-3 px-4 py-2 w-full"
+                                                                        variants={buttonVariants}
+                                                                        whileHover="hover"
+                                                                        whileTap="tap"
+                                                                    >
+                                                                        <Reply className="w-4 h-4 text-black dark:text-white group-hover:text-black" />
+                                                                        <span className='select-none group-hover:text-black text-black dark:text-white'>Reply</span>
+                                                                    </motion.button>
+                                                                )}
+
+                                                               
+                                                                {user && user?.email === selectedMessageId.email && !selectedMessageId.isDeleted && (
+                                                                    <motion.button
+                                                                        onClick={() => handleDelete(selectedMessageId.id)}
+                                                                        className="flex group items-center space-x-3 px-4 py-2 w-full"
+                                                                        variants={buttonVariants}
+                                                                        whileHover="hover"
+                                                                        whileTap="tap"
+                                                                    >
+                                                                        <Trash2 className="w-4 h-4 text-black dark:text-white group-hover:text-black " />
+                                                                        <span className='select-none text-black dark:text-white group-hover:text-black'>Delete</span>
+                                                                    </motion.button>
+                                                                )}
+                                                                {!selectedMessageId.isDeleted && (
+                                                                    <motion.button
+                                                                        onClick={() => handleCopy(selectedMessageId.content)}
+                                                                        className="flex group items-center space-x-3 px-4 py-2 w-full"
+                                                                        variants={buttonVariants}
+                                                                        whileHover="hover"
+                                                                        whileTap="tap"
+                                                                    >
+                                                                        {copied ? (
+                                                                            <Loader className='w-4 h-4 animate-spin text-black dark:text-white group-hover:text-black' />
+                                                                        ) : (
+                                                                            <Copy className="w-4 h-4 text-black dark:text-white group-hover:text-black" />
+                                                                        )}
+                                                                        <span className='select-none text-black dark:text-white group-hover:text-black'>Copy</span>
+                                                                    </motion.button>
+                                                                )}
+                                                            </>
+                                                        )}
+
+
+
+                                                    </div>
+                                                </motion.div>
+                                            </>
+                                        )}
+                                    </AnimatePresence>
+
+
 
                                 </div>
                                 <div className={cn("flex text-gray-400 text-xs text-right", user?.email === message.email ? "justify-end" : "ml-12")}>
