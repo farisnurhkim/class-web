@@ -274,7 +274,7 @@ const ChatsPage = ({ user }: { user: User | null | undefined }) => {
             setSelectedMessage(messageId)
             setMenuPosition(position);
             setShowMenu(true);
-        }, 500);
+        }, 800);
     }, []);
 
     const handleLongPressEnd = useCallback(() => {
