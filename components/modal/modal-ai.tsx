@@ -123,7 +123,7 @@ const ModalAi = () => {
 
   return (
     <Dialog open={isOpenModal} onOpenChange={() => onClose()}>
-      <DialogContent className='h-[calc(100vh-20px)] sm:h-[calc(100vh-40)] md:h-[calc(100vh-60)] lg:h-[calc(100vh-80)] flex flex-col'>
+      <DialogContent className='h-[calc(100vh-35px)] sm:h-[calc(100vh-50)] md:h-[calc(100vh-70)] lg:h-[calc(100vh-90)] flex flex-col'>
         <DialogHeader>
           <DialogTitle className='flex items-center gap-1'>
             <Bot className='text-black dark:text-white w-7 h-7' />
