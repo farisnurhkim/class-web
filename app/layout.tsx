@@ -26,28 +26,28 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "12th Grade RPL 1 batch 2024 - Unforgettable Memories",
+  title: "12 RPL 1 batch 2024 - Unforgettable Memories",
   authors: [{ name: "Faris Nur Hakim", url: "https://tb-xiirpl1-24.vercel.app" }],
-  description: "A commemorative website for the 12th-grade RPL 1 class batch 2024 SMK Taruna Bangsa Kota Bekasi, showcasing students, homeroom teacher, class structure, gallery, and real-time chat.",
+  description: "A commemorative website for the 12 RPL 1 class batch 2024 SMK Taruna Bangsa Kota Bekasi, showcasing students, homeroom teacher, class structure, gallery, and real-time chat.",
   icons: {
     icon: "/rpl1.jpg",
   },
   twitter: {
     images: ["/icon/rpl1.jpg"],
     card: "summary_large_image",
-    description: "A commemorative website for the 12th-grade RPL 1 class batch 2024 SMK Taruna Bangsa Kota Bekasi, showcasing students, homeroom teacher, class structure, gallery, and real-time chat.",
-    title: "12th Grade RPL 1 - Unforgettable Memories",
+    description: "A commemorative website for the 12 RPL 1 class batch 2024 SMK Taruna Bangsa Kota Bekasi, showcasing students, homeroom teacher, class structure, gallery, and real-time chat.",
+    title: "12 RPL 1 - Unforgettable Memories",
   },
   openGraph: {
     type: "website",
     images: [
       {
         url: "/icon/rpl1.jpg",
-        alt: "12th Grade RPL 1 - Unforgettable Memories",
+        alt: "12 RPL 1 - Unforgettable Memories",
       }
     ],
-    description: "A commemorative website for the 12th-grade RPL 1 class batch 2024 SMK Taruna Bangsa Kota Bekasi, showcasing students, homeroom teacher, class structure, gallery, and real-time chat.",
-    title: "12th Grade RPL 1 batch 2024 - Unforgettable Memories"
+    description: "A commemorative website for the 12 RPL 1 class batch 2024 SMK Taruna Bangsa Kota Bekasi, showcasing students, homeroom teacher, class structure, gallery, and real-time chat.",
+    title: "12 RPL 1 batch 2024 - Unforgettable Memories"
   },
   verification: {
     google: "tuDZwvgi6p3epPOowA97qn6FzX2r6FyoNomDmSXFXdg"
