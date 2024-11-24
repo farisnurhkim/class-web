@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import Navbar from "@/components/header/navbar";
 import { Indie_Flower } from '@next/font/google';
 import { GoogleAnalytics } from '@next/third-parties/google';
+import ModalProvider from "@/components/modal-provider";
 
 const indieFlower = Indie_Flower({
   weight: '400',
@@ -26,9 +27,10 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: "12th Grade RPL 1 batch 2024 - Unforgettable Memories",
+  authors: [{ name: "Faris Nur Hakim", url: "https://tb-xiirpl1-24.vercel.app" }],
   description: "A commemorative website for the 12th-grade RPL 1 class batch 2024 SMK Taruna Bangsa Kota Bekasi, showcasing students, homeroom teacher, class structure, gallery, and real-time chat.",
   icons: {
-    icon: "/icon/rpl1.jpg",
+    icon: "/rpl1.jpg",
   },
   twitter: {
     images: ["/icon/rpl1.jpg"],
@@ -46,8 +48,12 @@ export const metadata: Metadata = {
     ],
     description: "A commemorative website for the 12th-grade RPL 1 class batch 2024 SMK Taruna Bangsa Kota Bekasi, showcasing students, homeroom teacher, class structure, gallery, and real-time chat.",
     title: "12th Grade RPL 1 batch 2024 - Unforgettable Memories"
+  },
+  verification: {
+    google: "tuDZwvgi6p3epPOowA97qn6FzX2r6FyoNomDmSXFXdg"
   }
 };
+
 
 
 export default function RootLayout({
@@ -68,6 +74,7 @@ export default function RootLayout({
           <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GTM_ID || ""} />
           <Navbar />
           {children}
+          <ModalProvider/>
         </ThemeProvider>
       </body>
     </html>

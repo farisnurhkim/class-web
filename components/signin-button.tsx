@@ -10,7 +10,7 @@ const SignInButton = () => {
         <div className="flex items-center justify-center mt-4">
             <Button onClick={() => signin()} className="flex items-center bg-white group hover:bg-blue-600 ">
                 <img src="/icon/google.png" alt="gogle" className="w-8" />
-                <span className="text-black font-medium group-hover:text-white">Login to Google to use realtime chat</span>
+                <span className="text-black font-medium group-hover:text-white">Login to Google to use realtime chat or RPL ONE AI</span>
             </Button>
         </div>
     )

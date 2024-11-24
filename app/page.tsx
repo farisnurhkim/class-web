@@ -7,6 +7,7 @@ import ChatsPage from "@/components/layout/ChatsPage";
 import { currentUser } from "@/lib/currentUser";
 import SignInButton from "@/components/signin-button";
 import Footer from "@/components/Footer";
+import ModalTrigerAi from "@/components/modal/modal-triger/modal-triger-ai";
 
 export default async function Home() {
   const user = await currentUser();
@@ -65,6 +66,8 @@ export default async function Home() {
           </div>
         </div>
       </section>
+
+      <ModalTrigerAi user={user}/>
 
 
     <Footer/>
