@@ -1057,6 +1057,8 @@ Jadwal untuk kelas ${kelas}:\n`;
     data.classInfo.choir.location
   }
 
+  Resmi telah lulus per tanggal: ${data.classInfo.graduationYear}
+
   Wali Kelas X: ${data.classInfo.homeroomTeachers.class10}
   Wali Kelas XI: ${data.classInfo.homeroomTeachers.class11}
   Wali Kelas XII: ${data.classInfo.homeroomTeachers.class12}
