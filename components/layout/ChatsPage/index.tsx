@@ -69,7 +69,8 @@ const ChatsPage = ({ user }: { user: User | null | undefined }) => {
         setValue(e.target.value);
     }
 
-    const handleSendMessage = async () => {
+    const handleSendMessage = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
         const date = new Date().toISOString();
         const message = {
             id: id,
@@ -223,7 +224,7 @@ const ChatsPage = ({ user }: { user: User | null | undefined }) => {
                     behavior: 'smooth',
                     block: 'center'
                 });
-            }, 600)
+            }, 500)
 
             element.classList.add('bg-blue-200');
             element.classList.add('dark:bg-slate-800');
@@ -274,7 +275,7 @@ const ChatsPage = ({ user }: { user: User | null | undefined }) => {
             setSelectedMessage(messageId)
             setMenuPosition(position);
             setShowMenu(true);
-        }, 1000);
+        }, 900);
     }, []);
 
     const handleLongPressEnd = useCallback(() => {
@@ -582,7 +583,7 @@ const ChatsPage = ({ user }: { user: User | null | undefined }) => {
                                     </button>
                                 </div>
                             )}
-                            <form action={handleSendMessage} className="flex items-center mt-4">
+                            <form onSubmit={handleSendMessage} className="flex items-center mt-4">
                                 <input
                                     ref={inputRef}
                                     type="text"
