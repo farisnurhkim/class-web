@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '',
     },
-    sitemap: 'https://tb-xiirpl1-24.vercel.app/sitemap.xml',
+    sitemap: 'https://smktarunabangsa.rpl1.xyz/sitemap.xml',
   }
 }
