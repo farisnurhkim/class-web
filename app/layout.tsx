@@ -27,6 +27,16 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: "12 RPL 1 batch 2024 - Unforgettable Memories",
+  keywords: [
+    "SMK Taruna Bangsa",
+    "RPL 1",
+    "RPL 1 batch 21",
+    "12 RPL 1",
+    "12 RPL 1 batch 2024",
+    "kelas 12",
+    "memories",
+    "portal siswa",
+  ],
   authors: [{ name: "Faris Nur Hakim", url: "https://smktarunabangsa.rpl1.xyz" }],
   description: "A commemorative website for the 12 RPL 1 class batch 2024 SMK Taruna Bangsa Kota Bekasi, showcasing students, homeroom teacher, class structure, gallery, and real-time chat.",
   icons: {
@@ -47,7 +57,8 @@ export const metadata: Metadata = {
       }
     ],
     description: "A commemorative website for the RPL 1 class batch 2021 SMK Taruna Bangsa Kota Bekasi, showcasing students, homeroom teacher, class structure, gallery, and real-time chat.",
-    title: "RPL 1 batch 2021 - Unforgettable Memories"
+    title: "RPL 1 batch 2021 - Unforgettable Memories",
+    locale: "id_ID",
   },
   verification: {
     google: "AfRBACOb1s7Vu4r7JLsUQqc-mzvi9De0Bq5x-FOiLtQ"
