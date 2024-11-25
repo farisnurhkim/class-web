@@ -95,11 +95,11 @@ const ChatsPage = ({ user }: { user: User | null | undefined }) => {
         }
 
         setValue("");
+        OaddMessages(message)
         handleCloseReply();
         scrollToBottom();
 
         try {
-            OaddMessages(message)
 
             if (!isOnline) {
                 throw new Error('You are offline');
