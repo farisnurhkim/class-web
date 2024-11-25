@@ -17,6 +17,7 @@ import {
   SkipForward, 
 } from "lucide-react";
 import { useModal } from '@/hooks/useModal';
+import { isNationalTeachersDay } from '@/lib/date';
 
 const ModalTeacherDay = () => {
   const [open, setOpen] = useState(false);
@@ -27,7 +28,9 @@ const ModalTeacherDay = () => {
 
 
   useEffect(() => {
-    setOpen(true);
+    if (isNationalTeachersDay()) {
+      setOpen(true);
+    }
   }, []);
 
 
@@ -92,7 +95,7 @@ const ModalTeacherDay = () => {
       <DialogContent className="max-w-sm max-h-screen">
         <DialogHeader>
           <DialogTitle className="text-center text-xl font-bold">
-            National Teachers Day
+            {isNationalTeachersDay() ? "National Teachers Day" : "Thank You, Teachers!"}
           </DialogTitle>
         </DialogHeader>
         
