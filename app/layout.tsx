@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     title: "12 RPL 1 batch 2024 - Unforgettable Memories"
   },
   verification: {
-    google: "tuDZwvgi6p3epPOowA97qn6FzX2r6FyoNomDmSXFXdg"
+    google: "AfRBACOb1s7Vu4r7JLsUQqc-mzvi9De0Bq5x-FOiLtQ"
   }
 };
 
