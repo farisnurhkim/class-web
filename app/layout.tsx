@@ -27,7 +27,7 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: "12 RPL 1 batch 2024 - Unforgettable Memories",
-  authors: [{ name: "Faris Nur Hakim", url: "https://tb-xiirpl1-24.vercel.app" }],
+  authors: [{ name: "Faris Nur Hakim", url: "https://smktarunabangsa.rpl1.xyz" }],
   description: "A commemorative website for the 12 RPL 1 class batch 2024 SMK Taruna Bangsa Kota Bekasi, showcasing students, homeroom teacher, class structure, gallery, and real-time chat.",
   icons: {
     icon: "/rpl1.jpg",
@@ -43,11 +43,11 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/icon/rpl1.jpg",
-        alt: "12 RPL 1 - Unforgettable Memories",
+        alt: "RPL 1 - Unforgettable Memories",
       }
     ],
-    description: "A commemorative website for the 12 RPL 1 class batch 2024 SMK Taruna Bangsa Kota Bekasi, showcasing students, homeroom teacher, class structure, gallery, and real-time chat.",
-    title: "12 RPL 1 batch 2024 - Unforgettable Memories"
+    description: "A commemorative website for the RPL 1 class batch 2021 SMK Taruna Bangsa Kota Bekasi, showcasing students, homeroom teacher, class structure, gallery, and real-time chat.",
+    title: "RPL 1 batch 2021 - Unforgettable Memories"
   },
   verification: {
     google: "AfRBACOb1s7Vu4r7JLsUQqc-mzvi9De0Bq5x-FOiLtQ"
