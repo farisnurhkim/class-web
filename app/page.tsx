@@ -8,6 +8,7 @@ import { currentUser } from "@/lib/currentUser";
 import SignInButton from "@/components/signin-button";
 import Footer from "@/components/Footer";
 import ModalTrigerAi from "@/components/modal/modal-triger/modal-triger-ai";
+import ModalTrigerTeacherDay from "@/components/modal/modal-triger/modal-teacher-day-triger";
 
 export default async function Home() {
   const user = await currentUser();
@@ -68,6 +69,7 @@ export default async function Home() {
       </section>
 
       <ModalTrigerAi user={user}/>
+      <ModalTrigerTeacherDay />
 
 
     <Footer/>

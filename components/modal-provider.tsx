@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import ModalAi from "./modal/modal-ai";
+import ModalTeacherDay from "./modal/modal-teacher-day";
 
 const ModalProvider = () => {
     const [isMounted, setIsMounted] = useState(false);
@@ -15,6 +16,7 @@ const ModalProvider = () => {
   return (
     <>
         <ModalAi/>
+        <ModalTeacherDay/>
     </>
   )
 }

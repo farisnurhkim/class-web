@@ -11,7 +11,7 @@ import { useConnectionStatus } from '@/hooks/useConnectionStatus';
 
 const ModalAi = () => {
   const { type, isOpen, onClose, data } = useModal();
-  const user = data.user;
+  const user = data?.user || null;
   const isOpenModal = isOpen && type === "AI";
   const [text, setText] = useState("");
   const [isLoading, setIsLoading] = useState(false);

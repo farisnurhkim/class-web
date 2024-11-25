@@ -1,7 +1,7 @@
 import {create} from "zustand";
 import { User } from "next-auth"
 
-type ModalType = "AI";
+type ModalType = "AI" | "TeacherDay";
 
 interface ModalData {
     user?: User | null | undefined;
