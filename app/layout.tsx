@@ -42,15 +42,15 @@ export const metadata: Metadata = {
     "portal siswa",
   ],
   authors: [{ name: "Faris Nur Hakim", url: "https://smktarunabangsa.rpl1.xyz" }],
-  description: "A commemorative website for the 12 RPL 1 class, batch 2021. 2024 graduates SMK Taruna Bangsa Kota Bekasi, showcasing students, homeroom teacher, class structure, gallery, and real-time chat.",
+  description: "A commemorative website for the 12 RPL 1 class, batch 2021. 2024 graduates, SMK Taruna Bangsa Kota Bekasi, showcasing students, homeroom teacher, class structure, gallery, and real-time chat. Virtual Asistants AI, and more!",
   icons: {
     icon: "/rpl1.jpg",
   },
   twitter: {
     images: ["/icon/rpl1.jpg"],
     card: "summary_large_image",
-    description: "A commemorative website for the 12 RPL 1 class, batch 2021. 2024 graduates SMK Taruna Bangsa Kota Bekasi, showcasing students, homeroom teacher, class structure, gallery, and real-time chat.",
-    title: "12 RPL 1 - Unforgettable Memories",
+    description: "A commemorative website for the 12 RPL 1 class, batch 2021. 2024 graduates, SMK Taruna Bangsa Kota Bekasi, showcasing students, homeroom teacher, class structure, gallery, and real-time chat. Virtual Asistants AI, and more!",
+    title: "SMK Taruna Bangsa - 12 RPL 1, Batch 2021 - Unforgettable Memories",
   },
   openGraph: {
     type: "website",
@@ -60,8 +60,8 @@ export const metadata: Metadata = {
         alt: "RPL 1 - Unforgettable Memories",
       }
     ],
-    description: "A commemorative website for the RPL 1 class, batch 2021. 2024 graduates SMK Taruna Bangsa Kota Bekasi, showcasing students, homeroom teacher, class structure, gallery, and real-time chat.",
-    title: "RPL 1 batch 2021 - Unforgettable Memories",
+    description: "A commemorative website for the 12 RPL 1 class, batch 2021. 2024 graduates, SMK Taruna Bangsa Kota Bekasi, showcasing students, homeroom teacher, class structure, gallery, and real-time chat. Virtual Asistants AI, and more!",
+    title: "SMK Taruna Bangsa - 12 RPL 1, Batch 2021 - Unforgettable Memories",
     locale: "id_ID",
   },
   verification: {
