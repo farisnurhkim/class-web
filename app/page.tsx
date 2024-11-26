@@ -9,6 +9,7 @@ import SignInButton from "@/components/signin-button";
 import Footer from "@/components/Footer";
 import ModalTrigerAi from "@/components/modal/modal-triger/modal-triger-ai";
 import ModalTrigerTeacherDay from "@/components/modal/modal-triger/modal-teacher-day-triger";
+import EmbedPlayer from "@/components/music/embed-player";
 
 export default async function Home() {
   const user = await currentUser();
@@ -24,6 +25,13 @@ export default async function Home() {
           </div>
         </div>
       </section>
+
+      <div className="container">
+        <div className="mx-4 mt-4 mb-4 flex items-center justify-center gap-2">
+          <EmbedPlayer src="https://embed.music.apple.com/us/album/masa-sma/1774334968?i=1774334970" />
+          <EmbedPlayer src="https://embed.music.apple.com/us/album/sampai-jumpa/1079919708?i=1079919724" />
+        </div>
+      </div>
 
       <section id="structure" className="pt-8">
         <div className="mt-5">
@@ -67,13 +75,14 @@ export default async function Home() {
           </div>
         </div>
       </section>
+      
 
-      <ModalTrigerAi user={user}/>
+      <ModalTrigerAi user={user} />
       <ModalTrigerTeacherDay />
 
 
-    <Footer/>
-      
+      <Footer />
+
     </>
   );
 }
