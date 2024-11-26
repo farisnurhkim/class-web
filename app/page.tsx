@@ -27,7 +27,7 @@ export default async function Home() {
       </section>
 
       <div className="container">
-        <div className="mx-4 mt-4 mb-4 flex items-center justify-center gap-2 flex-wrap">
+        <div className="mx-4 mt-4 mb-4 flex items-center justify-center gap-2 flex-wrap md:flex-nowrap">
           <EmbedPlayer src="https://embed.music.apple.com/us/album/masa-sma/1774334968?i=1774334970" />
           <EmbedPlayer src="https://embed.music.apple.com/us/album/sampai-jumpa/1079919708?i=1079919724" />
         </div>
