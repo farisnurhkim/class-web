@@ -26,7 +26,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "12 RPL 1 batch 2024 - Unforgettable Memories",
+  title: "12 RPL 1, batch 2021 - Unforgettable Memories",
   keywords: [
     "SMK Taruna Bangsa",
     "RPL 1",
@@ -38,14 +38,14 @@ export const metadata: Metadata = {
     "portal siswa",
   ],
   authors: [{ name: "Faris Nur Hakim", url: "https://smktarunabangsa.rpl1.xyz" }],
-  description: "A commemorative website for the 12 RPL 1 class batch 2024 SMK Taruna Bangsa Kota Bekasi, showcasing students, homeroom teacher, class structure, gallery, and real-time chat.",
+  description: "A commemorative website for the 12 RPL 1 class, batch 2021. 2024 graduates SMK Taruna Bangsa Kota Bekasi, showcasing students, homeroom teacher, class structure, gallery, and real-time chat.",
   icons: {
     icon: "/rpl1.jpg",
   },
   twitter: {
     images: ["/icon/rpl1.jpg"],
     card: "summary_large_image",
-    description: "A commemorative website for the 12 RPL 1 class batch 2024 SMK Taruna Bangsa Kota Bekasi, showcasing students, homeroom teacher, class structure, gallery, and real-time chat.",
+    description: "A commemorative website for the 12 RPL 1 class, batch 2021. 2024 graduates SMK Taruna Bangsa Kota Bekasi, showcasing students, homeroom teacher, class structure, gallery, and real-time chat.",
     title: "12 RPL 1 - Unforgettable Memories",
   },
   openGraph: {
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
         alt: "RPL 1 - Unforgettable Memories",
       }
     ],
-    description: "A commemorative website for the RPL 1 class batch 2021 SMK Taruna Bangsa Kota Bekasi, showcasing students, homeroom teacher, class structure, gallery, and real-time chat.",
+    description: "A commemorative website for the RPL 1 class, batch 2021. 2024 graduates SMK Taruna Bangsa Kota Bekasi, showcasing students, homeroom teacher, class structure, gallery, and real-time chat.",
     title: "RPL 1 batch 2021 - Unforgettable Memories",
     locale: "id_ID",
   },

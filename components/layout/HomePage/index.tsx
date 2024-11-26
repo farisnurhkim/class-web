@@ -30,7 +30,7 @@ const HomePage = () => {
                   <h2 className="z-10 text-2xl md:text-3xl lg:text-4xl font-bold text-white">Welcome to XII RPL 1</h2>
                 </BoxReveal>
                 <BoxReveal boxColor="#fafafa" duration={0.5}>
-                  <p className="z-10 text-white text-sm md:text-base">Software Engineering Excellence | Batch 2024</p>
+                  <p className="z-10 text-white text-sm md:text-base">Software Engineering Excellence | Batch 2021 | 2024 graduates</p>
                 </BoxReveal>
                 <div className="mt-3">
                   <BoxReveal boxColor="#fafafa" duration={0.5}>
