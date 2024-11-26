@@ -66,7 +66,8 @@ export const metadata: Metadata = {
   },
   verification: {
     google: "AfRBACOb1s7Vu4r7JLsUQqc-mzvi9De0Bq5x-FOiLtQ"
-  }
+  },
+  applicationName: "SMK Taruna Bangsa - 12 RPL 1, Batch 2021 - Unforgettable Memories",
 };
 
 
