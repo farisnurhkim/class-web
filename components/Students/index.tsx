@@ -4,6 +4,7 @@ import ShineBorder from '../ui/shine-border';
 import { motion } from 'framer-motion';
 import { IStudents } from '@/lib/constants';
 import { Instagram } from 'lucide-react';
+import Link from 'next/link';
 
 const Students = ({ student }: { student: IStudents }) => {
     const name = student.name.split(' ');
@@ -36,7 +37,7 @@ const Students = ({ student }: { student: IStudents }) => {
                         {student.instagram && (
                             <div className='flex items-center gap-1'>
                                 <Instagram className='w-4 h-4' /> 
-                                <p className="text-xs md:text-sm">@{student.instagram}</p>
+                                <Link href={`https://instagram.com/${student.instagram}`} target='_blank' className="text-xs md:text-sm hover:text-blue-600">@{student.instagram}</Link>
                             </div>
                         )}
                     </div>
