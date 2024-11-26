@@ -1,4 +1,4 @@
-# [Class Web](https://tb-xiirpl1-24.vercel.app/)
+# [Class Web](https://smktarunabangsa.rpl1.xyz)
 
 The 12th grade RPL 1 class 2024 commemorative website for SMK Taruna Bangsa, Bekasi City, displays students, homeroom teachers, class structure, gallery and real-time chat. Created with Next.js, Typescript, Tailwind, Firebase, Framer motion, shadcn ui + magic ui
 
@@ -15,6 +15,7 @@ Before you begin, ensure you have the following installed on your machine:
 - Authentication
 - Serach students
 - Real-time chat. Reply, delete
+- Virtual Asisten AI
 
 ## Getting started
 
@@ -58,6 +59,9 @@ NEXT_PUBLIC_GTM_ID=your_gtm_id
 AUTH_SECRET=	# Added by `npx auth`. Read more: https://cli.authjs.dev
 AUTH_GOOGLE_ID="Your auth google id"
 AUTH_GOOGLE_SECRET="Your auth secret id"
+
+# Google Generative AI configuration
+GEMINI_API_KEY="Your Gemini API Key"
 
 ```
 
