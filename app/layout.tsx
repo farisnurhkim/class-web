@@ -26,7 +26,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "12 RPL 1, batch 2021 - Unforgettable Memories",
+  title: "SMK Taruna Bangsa - 12 RPL 1, Batch 2021 - Unforgettable Memories",
   keywords: [
     "SMK Taruna Bangsa",
     "RPL 1",
