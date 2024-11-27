@@ -44,7 +44,8 @@ export const metadata: Metadata = {
   authors: [{ name: "Faris Nur Hakim", url: "https://smktarunabangsa.rpl1.xyz" }],
   description: "A commemorative website for the 12 RPL 1 class, batch 2021. 2024 graduates, SMK Taruna Bangsa Kota Bekasi, showcasing students, homeroom teacher, class structure, gallery, and real-time chat. Virtual Asistants AI, and more!",
   icons: {
-    icon: "/rpl1.jpg",
+    icon: "/favicon.ico",
+
   },
   twitter: {
     images: ["/icon/rpl1.jpg"],
@@ -68,6 +69,7 @@ export const metadata: Metadata = {
     google: "AfRBACOb1s7Vu4r7JLsUQqc-mzvi9De0Bq5x-FOiLtQ"
   },
   applicationName: "SMK Taruna Bangsa - 12 RPL 1, Batch 2021 - Unforgettable Memories",
+  
 };
 
 
