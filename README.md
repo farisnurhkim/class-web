@@ -15,7 +15,7 @@ Before you begin, ensure you have the following installed on your machine:
 - Authentication
 - Serach students
 - Real-time chat. Reply, delete
-- Virtual Asisten AI
+- Virtual Assistant AI
 
 ## Getting started
 
